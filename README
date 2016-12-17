@@ -1,0 +1,49 @@
+# Fibinacci in c
+
+# Build fib.c
+gcc -o fib fib.c
+
+# Decompile Compiled File
+otool -tv fib
+
+# variables
+# 0x8 = x
+# 0xc = y
+# 
+
+# Result
+fib:
+(__TEXT,__text) section
+_main:
+#Setup 
+0000000100000f30    pushq    %rbp                # ?
+0000000100000f31    movq    %rsp, %rbp           # ?
+0000000100000f34    subq    $0x20, %rsp          # ?
+0000000100000f38    movl    $0x0, -0x4(%rbp)     # ?
+# Starting Setting Values
+0000000100000f3f    movl    $0x0, -0x8(%rbp)     # set x = 0
+0000000100000f46    movl    $0x1, -0xc(%rbp)     # set y = 1
+# printf x
+0000000100000f4d    leaq    0x56(%rip), %rdi
+0000000100000f54    movl    -0x8(%rbp), %esi     # print x
+0000000100000f57    movb    $0x0, %al
+0000000100000f59    callq    0x100000f88
+# z = x + y
+0000000100000f5e    movl    -0x8(%rbp), %esi
+0000000100000f61    addl    -0xc(%rbp), %esi
+0000000100000f64    movl    %esi, -0x10(%rbp)
+# x = y
+0000000100000f67    movl    -0xc(%rbp), %esi
+0000000100000f6a    movl    %esi, -0x8(%rbp)
+# y = z
+0000000100000f6d    movl    -0x10(%rbp), %esi
+0000000100000f70    movl    %esi, -0xc(%rbp)
+# ??
+0000000100000f73    movl    %eax, -0x14(%rbp)
+# compaire 255 to x
+0000000100000f76    cmpl    $0xff, -0x8(%rbp) 
+# jump if less then 255 jump to f4d
+0000000100000f7d    jl    0x100000f4d
+# jump back to while(1)
+0000000100000f83    jmp    0x100000f3f
+
