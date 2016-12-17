@@ -1,5 +1,5 @@
 # Fibinacci in c
-
+# https://en.wikipedia.org/wiki/Fibonacci_number
 # Build fib.c
 gcc -o fib fib.c
 
