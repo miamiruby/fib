@@ -3,7 +3,7 @@
 # Build fib.c
 gcc -o fib fib.c
 
-# Decompile Compiled File
+# Decompile Compiled File to Assembly
 otool -tv fib
 
 # variables
